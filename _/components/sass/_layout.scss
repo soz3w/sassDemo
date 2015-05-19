@@ -17,6 +17,10 @@ $large		: 75em;
 	padding: 0 3%;
 	//primary -------------------------------
 	.primary {
+		p{				
+				text-align: justify;
+	    		text-justify: auto;
+			}
 		margin-top : .2em;
 		@include at-breakpoint($medium){
 			//8 of 12
@@ -47,6 +51,10 @@ $large		: 75em;
 	}//primary
 	//secondary -------------------------------
 	.secondary {
+		p{				
+				text-align: justify;
+	    		text-justify: auto;
+			}
 		@include at-breakpoint($medium){
 			//omega to say it will be the last column
 			//the missing for of 12
@@ -63,6 +71,7 @@ $large		: 75em;
 //header -------------------------------------------------
 
 header{
+	position: relative;
 	img {
 		width : 95%;
 		margin : 2.5%;
@@ -104,37 +113,83 @@ header{
 .navigation {
 	background : lighten($darkblue,15);
 	ul.nav {
+			
 			@include at-breakpoint($small){
 				@include horizontal-list;
 			}
 		li {
+			
+			cursor: pointer;
 			i {
 				color:lighten($yellow,20);
 				padding-right: .5em;
 			}//icon
-		}//li
 
-		a {
-			@include single-transition(all,.5s,ease-out);
-			display: block;
-			text-decoration: none;
-			padding: 5px 10px;
-			color: $paleryellow;
-			&:hover{
-				background : orange;
-				a {
-					color:lighten($yellow,30);
+			ul {
+				position: absolute;
+				background : lighten($yellow,40);
+				display: none;
+				li{
+
 				}
 			}
+
+			a {
+					color:lighten($yellow,30);
+					display: block;
+					text-decoration: none;
+					padding: 5px 10px;
+			}
+
+		}//li
+		
+		
+
+		li:hover{
+			@include single-transition(all,.5s,ease-out);
+			background : orange;
+			ul {			
+				display: block;	
+				position :absolute;
+				color:lighten($blue,5);
+				li{
+					width: 100%;
+					margin-bottom: 5px;
+				}
+				 
+			}
+			a {
+					color:lighten($blue,5);
+					i {
+						color:lighten($blue,5);
+					}//icon
+			}
 		}
+		
+		
 
 
 	}//ul.nav
+
 }
+
 
 //Speakers List -------------------------------------------------
 
 .SpeakersList{
+	img{
+				@include border-radius;
+				width : 120px;
+				float : left;
+				margin :{
+					right :10px;
+					bottom : 10px;
+				}//margin
+			}//img
+	i{
+		padding-right : 5px;
+	}
+
  @include at-breakpoint($medium){
  	text-align: center;
  	@include background(linear-gradient(top,lighten($darkerblue,3),$darkerblue));
@@ -178,6 +233,36 @@ header{
 
  	}//small
 
+ 	img.speaker {
+ 		float : none;
+ 		width : 40%;
+ 		max-width: 170px;
+ 		margin: 0 auto;
+ 		@include border-radius(50%);
+ 	}
+ 	.small{
+ 		display :block;
+ 	}
+ 	p:nth-of-type(2){
+		font-weight: 200 !important;
+		text-align: left;
+		font-size: .8em;
+		line-height: 0;
+		@include single-transition(all, .3s, ease-out);
+		opacity: 0;
+ 	}
+ 	&:hover {
+ 		p:nth-of-type(2){
+ 			line-height: 1.5em;
+ 			opacity: 1;
+ 		}
+ 	}
+ 	.artist{
+ 		@include span-columns(4,12);
+ 	}
+ 	.artist:nth-of-type(3){
+ 		@include span-columns(4 omega, 12);
+ 	}
  }// at medium
 } //SpeakersList
 
