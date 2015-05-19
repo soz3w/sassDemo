@@ -146,24 +146,52 @@ header{
 		
 
 		li:hover{
-			@include single-transition(all,.5s,ease-out);
-			background : orange;
-			ul {			
-				display: block;	
-				position :absolute;
-				color:lighten($blue,5);
-				li{
-					width: 100%;
-					margin-bottom: 5px;
+				a {
+						color: white;
+						i {
+							color:white;
+						}//icon
 				}
-				 
-			}
-			a {
-					color:lighten($blue,5);
-					i {
+
+				ul {
+					z-index: 10;
+						transform: translateX(50px);
+						@include single-transition(all,.5s,ease-out);
+								
+						display: block;	
+						position :absolute;
 						color:lighten($blue,5);
-					}//icon
+						li{
+							width: 150px;
+							margin-bottom: 5px;
+						}
+						li:hover{
+							background:$orange;
+						}
+							
+					}
+			@include at-breakpoint($small){
+					
+				
+				@include single-transition(all,.5s,ease-out);
+
+				background : orange;
+				ul {
+					transform: translateX(5px);			
+					display: block;	
+					position :absolute;
+					color:lighten($blue,5);
+					li{
+						width: 100%;
+						margin-bottom: 5px;
+					}
+					 
+				}
+				
 			}
+
+
+			
 		}
 		
 		
